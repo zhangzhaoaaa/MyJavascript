@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+</body>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    //间隔1秒执行一次，直到i为5时，暂停3秒后重新执行一秒执行一次
+    function startInterval(){
+        var i=0;
+        console.log("start interval...");
+        var interval = setInterval(function(){
+            i++;
+            console.log("interval..."+i);
+            if (i===5){
+                console.log("pause 3 second");
+                clearInterval(interval);
+                setTimeout(startInterval,3000);
+            }
+        },1000);
+    }
+    startInterval();
+</script>
+</html>
