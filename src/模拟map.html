@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+          var nixleData=[];
+          /*function verfiy(nobj){
+            if (nixleData.length==0){
+                nixleData.push(nobj);
+            }else{
+                var flag = false;
+                for (var i = 0,len=nixleData.length; i < len; i++) {
+                  if (nixleData[i].id==nobj.id){
+                    flag=true;
+                    break;
+                  }
+                }
+                if (!flag){
+                    nixleData.push(nobj);
+                }
+            }
+          }
+
+          var n1={id:1,name:"a"};
+          verfiy(n1);
+          var n2={id:2,name:"b"};
+          verfiy(n2);
+          var n3={id:3,name:"c"};
+          verfiy(n3);
+          var n4={id:2,name:"b"};
+          verfiy(n4);*/
+          ///console.log(nixleData.valueOf());
+
+            var b="x";
+            var ax = 'x';
+            var k1=22;
+            var json = {k1:ax};
+            console.log(json);
+          var realArray = $.map(nixleData,function(item,i){
+                var json= '{\"'+item['id']+"\":\""+item['name']+'\"}';
+                console.log(json);
+                return JSON.parse(json);
+          });
+          
+          console.log(realArray.valueOf());
+          /*var narr =[];
+          var js1= '{\"'+1+"\":\""+"aaa"+'\"}';
+          console.log(js1);
+          narr.push(JSON.parse(js1));
+          var js2= '{\"'+2+"\":\""+"bbb"+'\"}';
+          console.log(js2);
+          narr.push(JSON.parse(js2));
+          console.log(narr);
+*/
+ //-->
+<!--
+    var Map=function(){
+        this.mapArr={};
+        this.arrlength=0;
+
+        //假如有重复key，则不存入
+        this.put=function(key,value){
+          if(!this.containsKey(key)){
+           this.mapArr[key]=value;
+           this.arrlength=this.arrlength+1;
+          }
+        }
+        this.get=function(key){
+          return this.mapArr[key];
+        }
+
+        //传入的参数必须为Map结构
+        this.putAll=function(map){
+           if(Map.isMap(map)){
+               var innermap=this;
+               map.each(function(key,value){
+                  innermap.put(key,value);
+               })
+           }else{
+             alert("传入的非Map结构");
+           }
+        }
+        this.remove=function(key){
+              delete this.mapArr[key];
+              this.arrlength=this.arrlength-1;
+        }
+        this.size=function(){
+             return this.arrlength;
+        }
+
+        //判断是否包含key
+        this.containsKey=function(key){
+              return (key in this.mapArr);
+        }
+        //判断是否包含value
+        this.containsValue=function(value){
+              for(var p in this.mapArr){
+                 if(this.mapArr[p]==value){
+                    return true;
+                 }
+              }
+              return false;
+        }
+        //得到所有key 返回数组
+        this.keys=function(){
+           var keysArr=[];
+           for(var p in this.mapArr){
+             keysArr[keysArr.length]=p;
+           }
+           return keysArr;
+        }
+        //得到所有value 返回数组
+        this.values=function(){
+          var valuesArr=[];
+           for(var p in this.mapArr){
+             valuesArr[valuesArr.length]=this.mapArr[p];
+           }
+           return valuesArr;
+        }
+        
+        this.isEmpty=function(){
+           if(this.size()==0){
+             return false;
+           }
+           return true;
+        }
+        this.clear=function(){
+             this.mapArr={};
+             this.arrlength=0;
+        }
+        //循环
+        this.each=function(callback){
+            for(var p in this.mapArr){
+             callback(p,this.mapArr[p]);
+           }
+
+        }
+        
+
+    }
+    //判断是否是map对象
+    Map.isMap=function(map){
+      return  (map instanceof Map);
+    }
+
+
+    var map=new Map();
+    map.put("afei",25);
+    map.put("yaoming",31);
+    map.put("pp",2);
+    map.put("bill","55");
+    map.remove("afei");
+
+    var map2=new Map();
+    map2.put("003",333);
+    map2.put("004",444);
+    map.putAll(map2);
+
+
+    map.each(function(key,value){
+        alert(key+" : "+value);
+    })
+
+
+    
+ //-->
+
+     
+     
+          </script>
+    </head>
+    <body>
+        
+
+    </body>
+</html>
